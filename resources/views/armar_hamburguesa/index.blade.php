@@ -334,7 +334,7 @@ body {
     <div class="ingrediente-btn {{ $disponible ? '' : 'no-disponible' }}" 
          onclick="{{ $disponible ? 'agregarIngrediente(this)' : 'alert(\'⚠️ Ingrediente no disponible.\')' }}">
         <div class="img-circle">
-            <img src="{{ asset('assets/icons/' . $ingrediente->imagen) }}" 
+            <img src="{{ asset('assets/ingredients/' . $ingrediente->imagen) }}" 
                  alt="{{ $ingrediente->nombre_producto }}">
         </div>
         <span>
@@ -378,7 +378,7 @@ body {
             </button>
         </form>
 
-       <a href="{{ route('menu') }}" class="btn-custom btn-regresar">
+       <a href="{{ route('sugerencias.index') }}" class="btn-custom btn-regresar">
        <img src="{{ asset('assets/icons/black2.png') }}" alt="Icono regresar" style="height: 28px; transform: scale(1.2); vertical-align: middle; margin-right: 8px;">
        Regresar
        </a>

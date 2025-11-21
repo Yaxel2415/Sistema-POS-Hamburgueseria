@@ -204,79 +204,137 @@ td img {
     transform: scale(0.9);
 }
 
+/* NUEVOS ESTILOS PARA INGREDIENTES */
+.ingredientes-container {
+    margin-top: 8px;
+    text-align: left;
+}
+
+.ingredientes-title {
+    font-size: 0.85rem;
+    color: #dba445ff;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.ingredientes-list {
+    font-size: 0.8rem;
+    color: #cccccc;
+    padding-left: 15px;
+}
+
+.ingrediente-item {
+    display: block;
+    margin: 2px 0;
+    line-height: 1.3;
+}
+
+.hamburguesa-personalizada {
+    border-left: 3px solid #dba445ff;
+    padding-left: 8px;
+}
+
 </style>
 
 <div class="carrito-container">
     <h1>
-   <span style="color: #d3b860ff; font-size:50px;">🛒 TU ORDEN</span> <span style="color: #ffffffff;font-size:50px;">PERFECTA</span>
+        <span style="color: #d3b860ff; font-size:50px;">🛒 TU ORDEN</span> <span style="color: #ffffffff;font-size:50px;">PERFECTA</span>
     </h1>
 
-    <a href="{{ route('sugerencias.index') }}" class="btn-seguir"><img src="{{ asset('assets/icons/black2.png') }}" alt="Icono" style="height: 27px; vertical-align: middle; margin-right: 8px;">
-  Seguir comprando
-</a>
+    <a href="{{ route('sugerencias.index') }}" class="btn-seguir">
+        <img src="{{ asset('assets/icons/black2.png') }}" alt="Icono" style="height: 27px; vertical-align: middle; margin-right: 8px;">
+        Seguir comprando
+    </a>
 
     @if(count($carrito) > 0)
         <table>
-    <thead>
-        <tr>
-            <th>Producto</th>
-            <th>Precio</th>
-            <th>Cantidad</th>   <!-- Nueva columna -->
-            <th>Acción</th>
-        </tr>
-    </thead>
-    <tbody>
-        @php $total = 0; @endphp
-        @foreach($carrito as $index => $item)
-            <tr>
-                <td>
-                    <strong>{{ $item['nombre'] }}</strong>
-                </td>
-                <td>
-                    ${{ number_format($item['precio'], 2) }}
-                </td>
-                
-                <!-- CANTIDAD -->
-                <td>
-                    <form action="{{ url('/carrito/update/'.$index) }}" method="POST" style="display:flex; align-items:center; justify-content:center; gap:8px;">
-                        @csrf
-                        <button type="submit" name="accion" value="menos" class="btn-cantidad">➖</button>
-                        <span style="min-width:25px; text-align:center;">{{ $item['cantidad'] ?? 1 }}</span>
-                        <button type="submit" name="accion" value="mas" class="btn-cantidad">➕</button>
-                    </form>
-                </td>
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Precio</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                @php $total = 0; @endphp
+                @foreach($carrito as $index => $item)
+                    <tr>
+                        <td>
+                            <div class="{{ !empty($item['ingredientes']) ? 'hamburguesa-personalizada' : '' }}">
+                                <strong>{{ $item['nombre'] }}</strong>
+                                
+                                @if(!empty($item['ingredientes']))
+                                    <div class="ingredientes-container">
+                                        <div class="ingredientes-title">🍔 Ingredientes:</div>
+                                        <div class="ingredientes-list">
+                                            @php
+                                                // Convertir ingredientes a array si es string
+                                                if (is_string($item['ingredientes'])) {
+                                                    $ingredientesArray = array_map('trim', explode(',', $item['ingredientes']));
+                                                } else {
+                                                    $ingredientesArray = $item['ingredientes'];
+                                                }
+                                            @endphp
+                                            
+                                            @foreach($ingredientesArray as $ingrediente)
+                                                @if(!empty(trim($ingrediente)))
+                                                    <span class="ingrediente-item">• {{ trim($ingrediente) }}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                @endif
+                            </div>
+                        </td>
+                        <td>
+                            ${{ number_format($item['precio'], 2) }}
+                        </td>
+                        
+                        <!-- CANTIDAD -->
+                        <td>
+                            <form action="{{ url('/carrito/update/'.$index) }}" method="POST" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+                                @csrf
+                                <button type="submit" name="accion" value="menos" class="btn-cantidad">➖</button>
+                                <span style="min-width:25px; text-align:center;">{{ $item['cantidad'] ?? 1 }}</span>
+                                <button type="submit" name="accion" value="mas" class="btn-cantidad">➕</button>
+                            </form>
+                        </td>
 
-                <!-- ELIMINAR -->
-                <td>
-                    <form action="{{ url('/carrito/quitar/'.$index) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn-quitar">
-                            <img src="{{ asset('assets/icons/delete.png') }}" alt="Quitar" style="width:40px; height:40px; vertical-align:middle;">
-                        </button>
-                    </form>
-                </td>
-            </tr>
-            @php 
-                $total += ($item['precio'] * ($item['cantidad'] ?? 1)); 
-            @endphp
-        @endforeach
-    </tbody>
-</table>
+                        <!-- ELIMINAR -->
+                        <td>
+                            <form action="{{ url('/carrito/quitar/'.$index) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn-quitar">
+                                    <img src="{{ asset('assets/icons/delete.png') }}" alt="Quitar" style="width:40px; height:40px; vertical-align:middle;">
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                    @php 
+                        $total += ($item['precio'] * ($item['cantidad'] ?? 1)); 
+                    @endphp
+                @endforeach
+            </tbody>
+        </table>
+        
         <div class="total">
             Total: ${{ number_format($total, 2) }}
             
-            
             <div class="d-flex gap-2 mt-4">
-            <form action="{{ route('carrito.confirmar') }}" method="POST">
-             @csrf
-            <button type="submit" class="btn-pago"><img src="{{ asset('assets/icons/pago.png') }}" alt="Icono" style="height: 27px; vertical-align: middle; margin-right: 8px;">
-            Confirmar Venta
-            </button>
-            </form>
+                <form action="{{ route('carrito.confirmar') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="btn-pago">
+                        <img src="{{ asset('assets/icons/pago.png') }}" alt="Icono" style="height: 27px; vertical-align: middle; margin-right: 8px;">
+                        Confirmar Venta
+                    </button>
+                </form>
     
-            <a href="{{ route('menu') }}" class="btn-menu"><img src="{{ asset('assets/icons/casa.png') }}" alt="Icono" style="height: 27px; vertical-align: middle; margin-right: 8px;">
-            Menú Principal</a> </div>
-
+                <a href="{{ route('menu') }}" class="btn-menu">
+                    <img src="{{ asset('assets/icons/casa.png') }}" alt="Icono" style="height: 27px; vertical-align: middle; margin-right: 8px;">
+                    Menú Principal
+                </a>
+            </div>
         </div>
     @else
         <p style="text-align:center; font-size:1.2rem; color:#aaa; position: relative; top:-50px;">Tu carrito está vacío.</p>

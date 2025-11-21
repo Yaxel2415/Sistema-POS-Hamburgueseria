@@ -332,7 +332,7 @@ body {
     <div class="ingrediente-btn {{ $disponible ? '' : 'no-disponible' }}" 
          onclick="{{ $disponible ? 'agregarIngrediente(this)' : 'alert(\'⚠️ Ingrediente no disponible.\')' }}">
         <div class="img-circle">
-            <img src="{{ asset('assets/icons/' . $ingrediente->imagen) }}" alt="{{ $ingrediente->nombre_producto }}">
+            <img src="{{ asset('assets/ingredients/' . $ingrediente->imagen) }}" alt="{{ $ingrediente->nombre_producto }}">
         </div>
         <span>
             {{ $ingrediente->nombre_producto }}

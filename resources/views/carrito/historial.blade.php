@@ -225,6 +225,37 @@ tbody td {
     color: white;
     transform: translateY(-2px);
 }
+
+/* NUEVOS ESTILOS PARA INGREDIENTES EN HISTORIAL */
+.ingredientes-historial {
+    font-size: 0.8rem;
+    color: #dba445ff;
+    margin-top: 4px;
+    padding-left: 10px;
+}
+
+.ingredientes-title {
+    font-weight: bold;
+    font-size: 0.75rem;
+    color: #e28c22ff;
+    margin-bottom: 2px;
+}
+
+.ingrediente-item {
+    display: block;
+    margin: 1px 0;
+    line-height: 1.2;
+}
+
+.producto-con-ingredientes {
+    padding: 4px 0;
+}
+
+.contenedor-producto {
+    border-left: 2px solid #e28c22ff;
+    padding-left: 8px;
+    margin: 4px 0;
+}
 </style>
 
 <div class="historial-container">
@@ -288,7 +319,32 @@ tbody td {
                                 $subtotal += $detalle->precio_unitario * $detalle->cantidad;
                             @endphp
                             <tr>
-                                <td>{{ $detalle->nombre_producto }}</td>
+                                <td>
+                                    <div class="contenedor-producto">
+                                        <div class="producto-con-ingredientes">
+                                            {{ $detalle->nombre_producto }}
+                                            @if(!empty($detalle->ingredientes))
+                                                <div class="ingredientes-historial">
+                                                    <div class="ingredientes-title">🍔 Ingredientes:</div>
+                                                    @php
+                                                        // Convertir ingredientes a array si es string
+                                                        if (is_string($detalle->ingredientes)) {
+                                                            $ingredientesArray = array_map('trim', explode(',', $detalle->ingredientes));
+                                                        } else {
+                                                            $ingredientesArray = $detalle->ingredientes;
+                                                        }
+                                                    @endphp
+                                                    
+                                                    @foreach($ingredientesArray as $ingrediente)
+                                                        @if(!empty(trim($ingrediente)))
+                                                            <span class="ingrediente-item">• {{ trim($ingrediente) }}</span>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>${{ number_format($detalle->precio_unitario, 2) }}</td>
                                 <td>{{ $detalle->cantidad }}</td>
                                 <td>${{ number_format($detalle->precio_unitario * $detalle->cantidad, 2) }}</td>

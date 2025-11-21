@@ -44,7 +44,7 @@
         <!-- Encabezado -->
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h1 class="text-primary">📋 Pedidos Confirmados</h1>
-            <a href="{{ route('menu') }}" class="btn btn-primary">← Volver al Menú Principal</a>
+            <a href="{{ route('menu') }}" class="btn btn-primary"><img src="{{ asset('assets/icons/black2.png') }}" alt="Volver"style="width: 20px; margin-right: 5px;">Volver al Menú Principal</a>
         </div>
 
         <!-- Buscador y Paginación -->

@@ -84,11 +84,12 @@
     .apagar-icon { width: 70px; height: 38px; cursor: pointer; position: relative; top: 8px; transition: 0.3s; filter: invert(67%) sepia(78%) saturate(1300%) hue-rotate(2deg) brightness(102%) contrast(80%); }
     .apagar-icon:hover { filter: invert(84%) sepia(90%) saturate(1800%) hue-rotate(15deg) brightness(115%) contrast(80%); transform: scale(1.1); }
 
+    /* Sidebar mejorado */
     .sidebar {
         position: fixed;
         top: 0;
         left: -260px;
-        width: 280px;
+        width: 260px;
         height: 100%;
         background: linear-gradient(180deg, #bd8d40ff, #bb8942ff);
         color: black;
@@ -96,56 +97,131 @@
         box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
         z-index: 1000;
         padding-top: 15px;
+        overflow-y: auto;
     }
     .sidebar.open { left: 0; }
-    .sidebar-header { display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
-    .sidebar-header h3 { font-family: 'Fredoka One', cursive; color: #000; }
-    .sidebar-header button { background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
-    .sidebar-links { list-style: none; padding: 0; margin-top: 20px; }
-    .sidebar-links li { padding: 9px 12px; transition: background 0.3s ease; font-size: 18px;}
+    .sidebar-header { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; 
+        padding: 0 20px; 
+        margin-bottom: 10px;
+    }
+    .sidebar-header h3 { 
+        font-family: 'Fredoka One', cursive; 
+        color: #000; 
+        font-size: 1.4rem;
+        margin: 0;
+    }
+    .sidebar-links { 
+        list-style: none; 
+        padding: 0; 
+        margin: 0;
+    }
+    .sidebar-links li { 
+        padding: 12px 20px; 
+        transition: background 0.3s ease; 
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        font-size: 1rem;
+    }
     .sidebar-links li:hover { background: rgba(255,255,255,0.2); }
-    .sidebar-links a { color: black; text-decoration: none; font-weight: bold; display: flex; align-items: center; gap: 8px; }
+    .sidebar-links a { 
+        color: black; 
+        text-decoration: none; 
+        font-weight: bold; 
+        display: flex; 
+        align-items: center; 
+        gap: 12px;
+        font-size: 1rem;
+    }
+    .sidebar-links img {
+        width: 22px;
+        height: 22px;
+        object-fit: contain;
+    }
 
     /* --- Estilos del pie de información de la empresa --- */
     .info-empresa {
         background-color: #000;
         color: white;
         padding: 2.5rem 2rem;
-        width:1500px;
+        width:1435px;
         position:absolute;
-        top:2000px;
+        top:1980px;
+        left: 5px;
         border-top: 2px solid white;
         border-bottom: 2px solid white;
         text-align: center;
-    }
+  }
 
-    .info-empresa h3 {
-        color: #ff9d00;
-        font-family: 'Fredoka One', cursive;
-        font-size: 2rem;
-        margin-bottom: 10px;
-    }
+  .info-empresa h3 {
+      color: #ff9d00;
+      font-family: 'Fredoka One', cursive;
+      font-size: 2rem;
+  }
 
-    .info-empresa p {
-        margin: 6px 0;
-        font-size: 1rem;
-    }
+  .info-empresa p {
+      margin: 5px 0;
+      font-size: 1rem;
+  }
+
     .carrito-link {
-    margin-left: 1px; /* separa el carrito de los otros enlaces */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        margin-left: 1px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-.carrito-icon {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
-}
+    .carrito-icon {
+        width: 30px;
+        height: 30px;
+        transition: transform 0.3s ease;
+    }
 
-.carrito-link:hover .carrito-icon {
-    transform: scale(1.1) rotate(10deg);
-}
+    .carrito-link:hover .carrito-icon {
+        transform: scale(1.1) rotate(10deg);
+    }
+
+    /* Media Queries para responsividad */
+    @media (max-width: 768px) {
+        .navbar-left {
+            gap: 15px;
+        }
+        
+        .navbar-left a {
+            font-size: 1.2rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p, li {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .navbar-custom {
+            padding: 10px 20px;
+        }
+        
+        .navbar-left {
+            gap: 10px;
+        }
+        
+        .navbar-left a {
+            font-size: 1rem;
+        }
+        
+        h1 {
+            font-size: 2rem;
+        }
+    }
 
 </style>
 
@@ -159,8 +235,8 @@
         <a href="{{ route('ofertas_todas.todas') }}">Ofertas</a>
         <a href="{{ route('acercade') }}">Acerca de!</a>
         <a href="{{ route('carritoCliente.index') }}" class="carrito-link">
-        <span>Carrito</span>
-        <img src="{{ asset('assets/icons/carrito.png') }}" alt="Carrito" class="carrito-icon">
+            <span>Carrito</span>
+            <img src="{{ asset('assets/icons/carrito.png') }}" alt="Carrito" class="carrito-icon">
         </a>
     </div>
 
@@ -178,13 +254,48 @@
         <h3>Menú Cliente</h3>
     </div>
     <ul class="sidebar-links">
-        <li><a href="{{ route('hamburguesasCliente.index') }}">🍔 Hamburguesas</a></li>
-        <li><a href="{{ route('bebidasCliente.index') }}">🥤 Bebidas</a></li>
-        <li><a href="{{ route('combosCliente.index') }}">🍟 Combos</a></li>
-        <li><a href="{{ route('complementosCliente.index') }}">🍞 Complementos</a></li>
-        <li><a href="{{ route('armarHamburguesaCliente.index') }}">👨‍🍳 Armar Hamburguesa</a></li>
-        <li><a href="{{ route('catalogo.index') }}">📋 Catalogo</a></li>
-        <li><a href="{{ route('menucliente') }}">◀️ Regresar</a></li>
+        <li>
+            <a href="{{ route('hamburguesasCliente.index') }}">
+                <img src="{{ asset('assets/icons/burgerblack.png') }}" alt="Hamburguesa">
+                Hamburguesas
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('bebidasCliente.index') }}">
+                <img src="{{ asset('assets/icons/bebida.png') }}" alt="Bebidas">
+                Bebidas
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('combosCliente.index') }}">
+                <img src="{{ asset('assets/icons/combo.png') }}" alt="Combos">
+                Combos
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('complementosCliente.index') }}">
+                <img src="{{ asset('assets/icons/complementos.png') }}" alt="Complementos">
+                Complementos
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('armarHamburguesaCliente.index') }}">
+                <img src="{{ asset('assets/icons/chef.png') }}" alt="Armar Hamburguesa">
+                Armar Hamburguesa
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('catalogo.index') }}">
+                <img src="{{ asset('assets/icons/menu.png') }}" alt="Catalogo">
+                Catalogo
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('menucliente') }}">
+                <img src="{{ asset('assets/icons/salir.png') }}" alt="Cerrar Menú">
+                Regresar al Menú
+            </a>
+        </li>
     </ul>
 </div>
 
@@ -238,7 +349,6 @@
     <p>Horario: Lunes a Domingo de 10:00 a 22:00 hrs</p>
     <p style="font-size: 0.9rem; color: #aaa; margin-top: 10px;">© 2025 Burger Real - Todos los derechos reservados</p>
 </section>
-
 
 <script>
     // Toggle sidebar

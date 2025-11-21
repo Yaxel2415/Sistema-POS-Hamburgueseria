@@ -202,160 +202,211 @@
             font-weight: bold;
             font-size: 0.9rem;
         }
-            /* Navbar superior */
-    .navbar-left a {
-        color: white;
-        text-decoration: none;
-        margin-right: 15px;
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        transition: transform 0.2s ease;
-    }
 
-    .navbar-left a:hover {
-        transform: scale(1.1);
-    }
+        /* Navbar superior */
+        .navbar-left a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s ease;
+        }
 
-    /* Sidebar (oculto por defecto) */
-    .sidebar {
-        position: fixed;
-        top: 0;
-        left: -260px;
-        width: 260px;
-        height: 100%;
-        background: linear-gradient(180deg,  #bd8d40ff, #bb8942ff);
-        color: black;
-        transition: all 0.4s ease;
-        box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
-        z-index: 1000;
-        padding-top: 15px;
-    }
+        .navbar-left a:hover {
+            transform: scale(1.1);
+        }
 
-    .sidebar.open {
-        left: 0;
-    }
+        /* Sidebar (oculto por defecto) */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -260px;
+            width: 260px;
+            height: 100%;
+            background: linear-gradient(180deg, #bd8d40ff, #bb8942ff);
+            color: black;
+            transition: all 0.4s ease;
+            box-shadow: 4px 0 12px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            padding-top: 15px;
+            overflow-y: auto;
+        }
 
-    .sidebar-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 20px;
-    }
+        .sidebar.open {
+            left: 0;
+        }
 
-    .sidebar-header h3 {
-        font-family: 'Fredoka One', cursive;
-    }
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            margin-bottom: 10px;
+        }
 
-    .sidebar-header button {
-        background: none;
-        border: none;
-        color: white;
-        font-size: 1.8rem;
-        cursor: pointer;
-    }
+        .sidebar-header h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.4rem;
+            margin: 0;
+        }
 
-    .sidebar-links {
-        list-style: none;
-        padding: 0;
-        margin-top: 20px;
-    }
+        .sidebar-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
 
-    .sidebar-links li {
-        padding: 12px 20px;
-        transition: background 0.3s ease;
-    }
+        .sidebar-links li {
+            padding: 12px 20px;
+            transition: background 0.3s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
 
-    .sidebar-links li:hover {
-        background: rgba(255,255,255,0.2);
-    }
+        .sidebar-links li:hover {
+            background: rgba(255,255,255,0.2);
+        }
 
-    .sidebar-links a {
-        color: black;
-        text-decoration: none;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-    }
-      .info-empresa {
-      background-color: #000;
-      color: white;
-      padding: 2.5rem 1rem;
-      border-top: 2px solid white; /* línea divisoria blanca */
-  }
+        .sidebar-links a {
+            color: black;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+        }
 
-  .info-empresa h3 {
-      color: #ff9d00;
-      font-family: 'Fredoka One', cursive;
-      font-size: 2rem;
-  }
+        .sidebar-links img {
+            width: 22px;
+            height: 22px;
+            object-fit: contain;
+        }
 
-  .info-empresa p {
-      margin: 5px 0;
-      font-size: 1rem;
-  }
-  .carrito-link {
-    margin-left: 1px; /* separa el carrito de los otros enlaces */
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
+        .info-empresa {
+            background-color: #000;
+            color: white;
+            padding: 2.5rem 1rem;
+            border-top: 2px solid white;
+        }
 
-.carrito-icon {
-    width: 30px;
-    height: 30px;
-    transition: transform 0.3s ease;
-}
+        .info-empresa h3 {
+            color: #ff9d00;
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+        }
 
-.carrito-link:hover .carrito-icon {
-    transform: scale(1.1) rotate(10deg);
-}
-.rating-container {
-  text-align: center;
-  background-color: #0e0e0e;
-  color: white;
-  padding: 30px;
-  border-radius: 20px;
-  width: 500px;
-  margin: 40px auto;
-  box-shadow: 0 0 15px rgba(10, 10, 10, 0.1);
-}
+        .info-empresa p {
+            margin: 5px 0;
+            font-size: 1rem;
+        }
 
-.rating-container h2 {
-  font-family: 'Fredoka One', cursive;
-  color: #ff9d00;
-  margin-bottom: 15px;
-}
+        .carrito-link {
+            margin-left: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-.stars {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  cursor: pointer;
-}
+        .carrito-icon {
+            width: 30px;
+            height: 30px;
+            transition: transform 0.3s ease;
+        }
 
-.star {
-  font-size: 50px;
-  color: gray;
-  transition: transform 0.2s, color 0.2s;
-}
+        .carrito-link:hover .carrito-icon {
+            transform: scale(1.1) rotate(10deg);
+        }
 
-.star:hover {
-  transform: scale(1.2);
-  color: #ffcc00;
-}
+        .rating-container {
+            text-align: center;
+            background-color: #0e0e0e;
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            width: 500px;
+            margin: 40px auto;
+            box-shadow: 0 0 15px rgba(10, 10, 10, 0.1);
+        }
 
-.star.selected {
-  color: #ffcc00;
-}
+        .rating-container h2 {
+            font-family: 'Fredoka One', cursive;
+            color: #ff9d00;
+            margin-bottom: 15px;
+        }
 
-#rating-text {
-  margin-top: 15px;
-  font-size: 1.2rem;
-  color: #ccc;
-}
+        .stars {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+        }
 
+        .star {
+            font-size: 50px;
+            color: gray;
+            transition: transform 0.2s, color 0.2s;
+        }
+
+        .star:hover {
+            transform: scale(1.2);
+            color: #ffcc00;
+        }
+
+        .star.selected {
+            color: #ffcc00;
+        }
+
+        #rating-text {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        /* Media Queries para responsividad */
+        @media (max-width: 768px) {
+            .hero-text h1,
+            .hero-text h2 {
+                font-size: 3rem;
+            }
+            
+            .navbar-left {
+                gap: 15px;
+            }
+            
+            .navbar-left a {
+                font-size: 1.2rem;
+            }
+            
+            .rating-container {
+                width: 90%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-text h1,
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+            
+            .navbar-custom {
+                padding: 10px 20px;
+            }
+            
+            .navbar-left {
+                gap: 10px;
+            }
+            
+            .navbar-left a {
+                font-size: 1rem;
+            }
+            
+            .offers-section h2 {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -370,15 +421,16 @@
         <a href="{{ route('ofertas_todas.todas') }}">Ofertas</a>
         <a href="{{ route('acercade') }}">Acerca de!</a>
         <a href="{{ route('carritoCliente.index') }}" class="carrito-link">
-        <span>Carrito</span>
-        <img src="{{ asset('assets/icons/carrito.png') }}" alt="Carrito" class="carrito-icon">
+            <span>Carrito</span>
+            <img src="{{ asset('assets/icons/carrito.png') }}" alt="Carrito" class="carrito-icon">
         </a>
     </div>
 
     <div class="navbar-right">
         <a href="{{ route('login') }}" style="text-decoration: none; color: inherit;">
-        <span>Salir</span>
-        <img src="{{ asset('assets/icons/apagar.png') }}" alt="Salir" class="apagar-icon">
+            <span>Salir</span>
+            <img src="{{ asset('assets/icons/apagar.png') }}" alt="Salir" class="apagar-icon">
+        </a>
     </div>
 </div>
 
@@ -389,96 +441,136 @@
     </div>
 
     <ul class="sidebar-links">
-        <li><a href="{{ route('hamburguesasCliente.index') }}">🍔 Hamburguesas</a></li>
-        <li><a href="{{ route('bebidasCliente.index') }}">🥤 Bebidas</a></li>
-        <li><a href="{{ route('combosCliente.index') }}">🍟 Combos</a></li>
-        <li><a href="{{ route('complementosCliente.index') }}">🍞 Complementos</a></li>
-        <li><a href="{{ route('armarHamburguesaCliente.index') }}">👨‍🍳 Armar Hamburguesa</a></li>
-        <li><a href="{{ route('catalogo.index') }}">📋 Catalogo</a></li>
-        <li><a href="{{ route('menucliente') }}">❌ Cerrar Menu</a></li>
+        <li>
+            <a href="{{ route('hamburguesasCliente.index') }}">
+                <img src="{{ asset('assets/icons/burgerblack.png') }}" alt="Hamburguesa"> 
+                Hamburguesas
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('bebidasCliente.index') }}">
+                <img src="{{ asset('assets/icons/bebida.png') }}" alt="Bebidas"> 
+                Bebidas
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('combosCliente.index') }}">
+                <img src="{{ asset('assets/icons/combo.png') }}" alt="Combos"> 
+                Combos
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('complementosCliente.index') }}">
+                <img src="{{ asset('assets/icons/complementos.png') }}" alt="Complementos"> 
+                Complementos
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('armarHamburguesaCliente.index') }}">
+                <img src="{{ asset('assets/icons/chef.png') }}" alt="Armar Hamburguesa"> 
+                Armar Hamburguesa
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('catalogo.index') }}">
+                <img src="{{ asset('assets/icons/menu.png') }}" alt="Catalogo">
+                Catalogo
+            </a>
+        </li>
+
+        <li>
+            <a href="{{ route('menucliente') }}">
+                <img src="{{ asset('assets/icons/salir.png') }}" alt="Cerrar Menú">
+                Cerrar Menú
+            </a>
+        </li>
     </ul>
 </div>
 
-    <!-- HERO -->
-    <section class="hero-section">
-        <div class="hero-text">
-            <h1>Hecha con pasión</h1>
-            <h2>Servida con orgullo</h2>
-        </div>
-    </section>
-
-    <!-- OFERTAS -->
-<section class="offers-section py-5" style="background: #111; color: #fff;">
-  <div class="container text-center">
-    <h2 class="mb-5" style="font-weight: bold; letter-spacing: 1px;">🔥 OFERTAS ¡APROVÉCHALAS! 🔥</h2>
-
-    <div class="row justify-content-center g-4">
-      <!-- Tarjeta de Hamburguesas -->
-      <div class="col-md-5">
-        <div class="card h-100 border-0 shadow-lg"
-             style="background: linear-gradient(135deg, #ffc107, #ff9800); border-radius: 20px;">
-          <div class="card-body d-flex flex-column justify-content-between text-center text-dark">
-            <div>
-              <img src="{{ asset('assets/icons/hamburgesa.png') }}" alt="Combos" width="100" class="mb-3">
-              <h4 class="fw-bold">Hamburguesas en Oferta</h4>
-              <p>Deliciosas hamburguesas con descuentos irresistibles 🍔</p>
-            </div>
-            <a href="{{ route('ofertas.hamburguesas') }}" 
-            class="btn mt-3 fw-bold rounded-pill"
-            style="background-color: #050505ff; color: white; border: none; transition: 0.3s;">
-             Ver Ofertas</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tarjeta de Combos -->
-      <div class="col-md-5">
-        <div class="card h-100 border-0 shadow-lg"
-             style="background: linear-gradient(135deg, #03a9f4, #0288d1); border-radius: 20px;">
-          <div class="card-body d-flex flex-column justify-content-between text-center text-light">
-            <div>
-              <img src="{{ asset('assets/icons/combos.png') }}" alt="Combos" width="110" class="mb-3">
-              <h4 class="fw-bold">Combos Especiales</h4>
-              <p>Disfruta de combos completos a precios únicos 🍟🥤</p>
-            </div>
-            <a href="{{ route('ofertas.combos') }}" 
-            class="btn mt-3 fw-bold rounded-pill"
-            style="background-color: #000000ff; color: white; border: none; transition: 0.3s;">
-            Ver Combos</a>
-          </div>
-        </div>
-      </div>
+<!-- HERO -->
+<section class="hero-section">
+    <div class="hero-text">
+        <h1>Hecha con pasión</h1>
+        <h2>Servida con orgullo</h2>
     </div>
-  </div>
 </section>
-        
+
+<!-- OFERTAS -->
+<section class="offers-section py-5" style="background: #111; color: #fff;">
+    <div class="container text-center">
+        <h2 class="mb-5" style="font-weight: bold; letter-spacing: 1px;">🔥 OFERTAS ¡APROVÉCHALAS! 🔥</h2>
+
+        <div class="row justify-content-center g-4">
+            <!-- Tarjeta de Hamburguesas -->
+            <div class="col-md-5">
+                <div class="card h-100 border-0 shadow-lg"
+                     style="background: linear-gradient(135deg, #ffc107, #ff9800); border-radius: 20px;">
+                    <div class="card-body d-flex flex-column justify-content-between text-center text-dark">
+                        <div>
+                            <img src="{{ asset('assets/icons/hamburgesa.png') }}" alt="Combos" width="100" class="mb-3">
+                            <h4 class="fw-bold">Hamburguesas en Oferta</h4>
+                            <p>Deliciosas hamburguesas con descuentos irresistibles 🍔</p>
+                        </div>
+                        <a href="{{ route('ofertas.hamburguesas') }}" 
+                        class="btn mt-3 fw-bold rounded-pill"
+                        style="background-color: #050505ff; color: white; border: none; transition: 0.3s;">
+                         Ver Ofertas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta de Combos -->
+            <div class="col-md-5">
+                <div class="card h-100 border-0 shadow-lg"
+                     style="background: linear-gradient(135deg, #03a9f4, #0288d1); border-radius: 20px;">
+                    <div class="card-body d-flex flex-column justify-content-between text-center text-light">
+                        <div>
+                            <img src="{{ asset('assets/icons/combos.png') }}" alt="Combos" width="110" class="mb-3">
+                            <h4 class="fw-bold">Combos Especiales</h4>
+                            <p>Disfruta de combos completos a precios únicos 🍟🥤</p>
+                        </div>
+                        <a href="{{ route('ofertas.combos') }}" 
+                        class="btn mt-3 fw-bold rounded-pill"
+                        style="background-color: #000000ff; color: white; border: none; transition: 0.3s;">
+                        Ver Combos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
 <div class="rating-container">
-  <h2>Califica nuestra página</h2>
+    <h2>Califica nuestra página</h2>
 
-  <div class="stars">
-    <span class="star" data-value="1">★</span>
-    <span class="star" data-value="2">★</span>
-    <span class="star" data-value="3">★</span>
-    <span class="star" data-value="4">★</span>
-    <span class="star" data-value="5">★</span>
-  </div>
+    <div class="stars">
+        <span class="star" data-value="1">★</span>
+        <span class="star" data-value="2">★</span>
+        <span class="star" data-value="3">★</span>
+        <span class="star" data-value="4">★</span>
+        <span class="star" data-value="5">★</span>
+    </div>
 
-  <p id="rating-text">Selecciona una calificación</p>
+    <p id="rating-text">Selecciona una calificación</p>
 </div>
 
 <!-- NUEVO DIV - DATOS DE LA EMPRESA -->
 <section class="info-empresa">
-  <div class="container text-center">
-    <h3 class="fw-bold mb-3">🍔Hamburgueseria</h3>
-    <p>Dirección: Av. Principal #123, Ciudad del Sabor, México</p>
-    <p>Teléfono: (555) 123-4567 | Correo: contacto@burgeseria.com</p>
-    <p>Horario: Lunes a Domingo de 10:00 a 22:00 hrs</p>
-    <p style="font-size: 0.9rem; color: #aaa; margin-top: 10px;">
-      © 2025 Burgeseria - Todos los derechos reservados
-    </p>
-  </div>
+    <div class="container text-center">
+        <h3 class="fw-bold mb-3">🍔Hamburgueseria</h3>
+        <p>Dirección: Av. Principal #123, Ciudad del Sabor, México</p>
+        <p>Teléfono: (555) 123-4567 | Correo: contacto@burgeseria.com</p>
+        <p>Horario: Lunes a Domingo de 10:00 a 22:00 hrs</p>
+        <p style="font-size: 0.9rem; color: #aaa; margin-top: 10px;">
+        © 2025 Burgeseria - Todos los derechos reservados
+        </p>
+    </div>
 </section>
-
 
 <script>
     // Toggle sidebar
@@ -501,50 +593,54 @@
     });
 </script>
 
-
 <script>
-  const token = '{{ csrf_token() }}';
-  const stars = document.querySelectorAll('.star');
-  const ratingText = document.getElementById('rating-text');
+    const token = '{{ csrf_token() }}';
+    const stars = document.querySelectorAll('.star');
+    const ratingText = document.getElementById('rating-text');
 
-  function updateStars(value) {
-    stars.forEach(star => {
-      star.classList.toggle('active', star.getAttribute('data-value') <= value);
-    });
-  }
-
-  stars.forEach(star => {
-    star.addEventListener('click', async () => {
-      const estrellas = star.getAttribute('data-value');
-      updateStars(estrellas);
-      ratingText.textContent = `Has calificado con ${estrellas} ${estrellas == 1 ? 'estrella' : 'estrellas'} ⭐`;
-
-      try {
-        const response = await fetch("{{ route('guardar.calificacion') }}", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "X-CSRF-TOKEN": token,
-          },
-          body: JSON.stringify({ estrellas }),
+    function updateStars(value) {
+        stars.forEach(star => {
+            const starValue = parseInt(star.getAttribute('data-value'));
+            if (starValue <= value) {
+                star.classList.add('selected');
+            } else {
+                star.classList.remove('selected');
+            }
         });
+    }
 
-        const data = await response.json();
+    stars.forEach(star => {
+        star.addEventListener('click', async () => {
+            const estrellas = star.getAttribute('data-value');
+            updateStars(estrellas);
+            ratingText.textContent = `Has calificado con ${estrellas} ${estrellas == 1 ? 'estrella' : 'estrellas'} ⭐`;
 
-        if (data.success) {
-          alert(data.success); // ✅ Muestra mensaje de éxito del controlador
-        } else if (data.error) {
-          alert(data.error); // ⚠️ Muestra mensaje de error del controlador
-        } else {
-          alert("❌ Ocurrió un error inesperado.");
-        }
+            try {
+                const response = await fetch("{{ route('guardar.calificacion') }}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        "X-CSRF-TOKEN": token,
+                    },
+                    body: JSON.stringify({ estrellas }),
+                });
 
-      } catch (error) {
-        alert("❌ Error al conectar con el servidor.");
-        console.error(error);
-      }
+                const data = await response.json();
+
+                if (data.success) {
+                    alert(data.success);
+                } else if (data.error) {
+                    alert(data.error);
+                } else {
+                    alert("❌ Ocurrió un error inesperado.");
+                }
+
+            } catch (error) {
+                alert("❌ Error al conectar con el servidor.");
+                console.error(error);
+            }
+        });
     });
-  });
 </script>
 
 </body>
