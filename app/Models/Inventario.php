@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Inventario extends Model
+{
+    use HasFactory;
+
+    protected $table = 'inventario';
+
+    protected $fillable = [
+        'id_producto',
+        'nombre_producto',
+        'categoria',
+        'cantidad',
+        'unidad_medida',
+        'proveedor',
+        'precio_compra',
+        'minimo_stock',
+        'activo',
+    ];
+}
